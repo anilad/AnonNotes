@@ -1,0 +1,9 @@
+<div class="container form-control bg-light" style="overflow: auto;">
+  <div class="container form-control bg-white" *ngFor="let note of notes">
+      <p>{{ note.note }}</p>
+      <p>Created on: {{ note.createdAt }}</p>
+  </div>
+  <div class="container form-control bg-white" *ngIf="notes.length==0">
+    <p>No notes added yet.</p>
+  </div>
+</div>

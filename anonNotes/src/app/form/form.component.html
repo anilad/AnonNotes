@@ -1,0 +1,23 @@
+<div class="form">
+  <div class="form-control bg-light">
+    <form #form ='ngForm' (submit)="onSubmit()">
+      <div class="form-control">
+          <label for="note">Note: </label>
+          <textarea class="form-control form-control-sm" 
+          name="note" 
+          placeholder="Enter note here" 
+          required 
+          minlength='5' 
+          [ngClass]="{'is-invalid':note.touched && note.errors}" 
+          [(ngModel)]='newNote.note'
+          #note='ngModel'></textarea>
+        <div class="container" *ngIf="note.touched && note.errors">
+          <p class="text-danger" *ngIf="note.errors.required">Note is required</p>
+          <p class="text-danger" *ngIf="note.errors.minlength">Note must be 5 or more characters</p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top: 5px;" [disabled]="!form.form.valid">Submit</button>
+    </form>
+    {{newNote.note | json}}
+  </div>
+</div>
